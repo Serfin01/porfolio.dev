@@ -1,0 +1,43 @@
+---
+import PropTypes from "prop-types";
+---
+
+const ProfileCard = ({ imgSrc, name, role, date, headline, subtitle, headlineClass, subtitleClass, children }) => {
+  return (
+    <div>
+      <div class="flex gap-3">
+        <div class="w-12 h-12 rounded-full overflow-hidden">
+          <img src={imgSrc} alt={`Foto de perfil de ${name}`} />
+        </div>
+        <div class="flex flex-col">
+          <p class="text-lg font-semibold">
+            {name}
+            <span class="uppercase text-discord-white bg-indigo-500 font-semibold h-fit px-1 rounded text-sm">
+              {role}
+            </span>
+            <span class="text-discord-time text-xs">{date}</span>
+          </p>
+        </div>
+      </div>
+      <div class="bg-discord-gray rounded border-l-4 border-indigo-500 p-3 max-w-[90%] ml-20">
+        <h1 class={headlineClass}>{headline}</h1>
+        <h2 class={subtitleClass}>{subtitle}</h2>
+        {children}
+      </div>
+    </div>
+  );
+};
+
+ProfileCard.propTypes = {
+  imgSrc: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  role: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  headline: PropTypes.string.isRequired,
+  subtitle: PropTypes.string.isRequired,
+  headlineClass: PropTypes.string,
+  subtitleClass: PropTypes.string,
+  children: PropTypes.node,
+};
+
+export default ProfileCard;
